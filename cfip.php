@@ -1,41 +1,65 @@
 <?php
 error_reporting(0);
-// 要发送的数据
-$data = array('key' => 'iDetkOys');
+$content = '';
+// 获取IPv4数据
+$content_v4 = getIpData();
 
-// 发送POST请求并获取JSON数据
-$json_data = curl($data);
+// 获取IPv6数据
+$content_v6 = getIpData('v6');
 
-// 检查$json_data是否是一个数组
-if (is_array($json_data) && isset($json_data['info'])) {
-    // 遍历数组中的每个元素，提取ip和line字段并写入文件
-    foreach ($json_data['info'] as $info) {
-        //$txt .= $info['ip'] . "\n";
-        $content = '';
-        // 根据 line 的值进行替换
-        if ($info['line'] == 'CM') {
-            $txt .= $txt . $info['ip'] . '#移动' . "<br>";
-            $content .= $info['ip'] . '#移动' . "\r\n";
-        } elseif ($info['line'] == 'CU') {
-            $txt .= $txt . $info['ip'] . '#联通' . "<br>";
-            $content .= $info['ip'] . '#联通' . "\r\n";
-        } elseif ($info['line'] == 'CT') {
-            $txt .= $txt . $info['ip'] . '#电信' . "<br>";
-            $content .= $info['ip'] . '#电信' . "\r\n";
-        } else {
-            $txt .= $txt . $info['ip'] . '#' . $info['ip'] . "<br>";
-            $content .= $info['ip'] . '#' . $info['ip'] . "\r\n";
-        }
+$content = $content_v4 . $content_v6;
+echo ($content);
+// 获取IP数据的函数
+function getIpData($type = '')
+{
+    $data = ['key' => 'iDetkOys'];
+    if ($type === 'v6') {
+        $data['type'] = 'v6';
     }
-    //exit($txt);
+    $json_data = curl($data);
 
-} else {
-    echo "错误：从API获取的数据不是一个有效的数组。";
+    // 检查$json_data是否是一个数组
+    if (is_array($json_data) && isset($json_data['info'])) {
+        $content = '';
+        // 遍历数组中的每个元素，提取ip和line字段并写入文件
+        foreach ($json_data['info'] as $info) {
+            //$txt .= $info['ip'] . "\n";
+
+            // 根据 line 的值进行替换
+            if ($info['line'] == 'CM') {
+                if ($type === 'v6') {
+                    $content .= $info['ip'] . '#移动v6_酸菜优选' . "\r\n";
+                } else {
+                    $content .= $info['ip'] . '#移动_酸菜优选' . "\r\n";
+                }
+            } elseif ($info['line'] == 'CU') {
+                if ($type === 'v6') {
+                    $content .= $info['ip'] . '#联通v6_酸菜优选' . "\r\n";
+                } else {
+                    $content .= $info['ip'] . '#联通_酸菜优选' . "\r\n";
+                }
+
+            } elseif ($info['line'] == 'CT') {
+                if ($type === 'v6') {
+                    $content .= $info['ip'] . '#电信v6_酸菜优选' . "\r\n";
+                } else {
+                    $content .= $info['ip'] . '#电信_酸菜优选' . "\r\n";
+                }
+            } else {
+                $txt .= $txt . $info['ip'] . '#' . $info['ip'] . "<br>";
+                $content .= $info['ip'] . '#' . $info['ip'] . "\r\n";
+            }
+        }
+        return $content;
+    } else {
+        return "错误：从API获取的数据不是一个有效的数组。";
+    }
 }
 
 
-// 使用示例
-$token = ' '; // 在这里放入你的 GitHub 令牌
+
+// github提交使用示例
+$token = ''; // 在这里放入你的 GitHub 令牌
 $repo = 'suancaicc/cf-ip'; // 例如 'username/repo'
 $branch = 'main'; // 你要提交的分支
 $filePath = 'ip.txt'; // 要创建或更新的文件路径
@@ -67,7 +91,8 @@ if ($message == "提交或更新文件") {
  * @param string $token GitHub API令牌
  * @param string $commitMessage 提交的信息
  */
-function githubPutFile($repo, $branch, $filePath, $content, $token, $commitMessage) {
+function githubPutFile($repo, $branch, $filePath, $content, $token, $commitMessage)
+{
     // 先获取文件的SHA值（如果文件已存在）
     $url = "https://api.github.com/repos/$repo/contents/$filePath?ref=$branch";
     $options = [
@@ -79,27 +104,27 @@ function githubPutFile($repo, $branch, $filePath, $content, $token, $commitMessa
             ]
         ]
     ];
-    
+
     // 创建HTTP上下文
     $context = stream_context_create($options);
 
     $response = file_get_contents($url, false, $context);
 
     $responseData = json_decode($response, true);
-  
+
     // 获取文件的SHA值
     $file_sha = isset($responseData['sha']) ? $responseData['sha'] : '';
 
     // 将内容进行base64编码
     $base64_content = base64_encode($content);
-    
+
     // 创建提交的JSON数据
     $data = [
         'message' => $commitMessage,
         'branch' => $branch,
         'content' => $base64_content,
     ];
-    
+
     // 如果文件已存在，则加入SHA值
     if ($file_sha) {
         $data['sha'] = $file_sha;
