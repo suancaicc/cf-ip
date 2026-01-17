@@ -1,8 +1,13 @@
 172.64.68.77#wetest联通LAX
-104.25.13.162#wetest联通LAX
 172.64.229.201#wetest联通LAX
-104.25.79.178#wetest联通LAX
-104.27.111.167#wetest联通LAX
+172.64.229.198#wetest联通LAX
+104.20.47.123#wetest联通LAX
+104.25.13.162#wetest联通LAX
+104.18.40.200#wetest电信SIN
+104.18.43.190#wetest电信SIN
+172.64.149.16#wetest电信SIN
+172.64.35.151#wetest电信SIN
+172.64.157.105#wetest电信SIN
 198.41.209.95#移动HKG
 172.67.80.57#移动LAX
 198.41.209.110#移动HKG
