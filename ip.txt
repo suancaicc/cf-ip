@@ -1,8 +1,13 @@
+104.16.30.48#wetest联通SJC
 104.18.255.166#wetest联通SJC
+104.17.78.98#wetest联通SJC
+104.16.205.181#wetest联通SJC
 104.17.221.71#wetest联通SJC
-104.16.175.110#wetest联通SJC
-104.19.174.117#wetest联通SJC
-104.16.46.153#wetest联通SJC
+172.64.34.198#wetest电信SIN
+104.18.36.4#wetest电信SIN
+172.64.145.33#wetest电信SIN
+172.64.158.26#wetest电信SIN
+104.18.43.91#wetest电信SIN
 198.41.209.100#移动HKG
 198.41.208.113#移动HKG
 198.41.209.149#移动HKG
