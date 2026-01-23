@@ -1,12 +1,12 @@
-104.17.141.60#wetest联通SJC
-104.17.127.165#wetest联通SJC
 104.17.223.32#wetest联通SJC
-104.16.158.154#wetest联通SJC
-104.17.175.211#wetest联通SJC
+104.18.77.19#wetest联通SJC
+104.17.173.2#wetest联通SJC
+104.17.127.165#wetest联通SJC
+104.19.175.131#wetest联通SJC
 172.64.38.229#wetest电信SIN
-104.18.47.122#wetest电信SIN
 104.18.36.27#wetest电信SIN
 172.64.34.151#wetest电信SIN
+104.18.47.122#wetest电信SIN
 104.18.34.162#wetest电信SIN
 162.159.249.42#移动LAX
 172.64.88.150#移动LAX
