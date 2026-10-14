@@ -1,16 +1,1 @@
-104.25.250.142#wetest移动HKG
-172.66.136.130#wetest移动HKG
-104.21.91.106#wetest移动HKG
-104.21.83.188#wetest移动HKG
-104.26.14.22#wetest移动SEA
-104.18.80.227#wetest联通LAX
-104.16.21.185#wetest联通LAX
-104.16.239.18#wetest联通LAX
-104.18.82.253#wetest联通LAX
-104.17.81.59#wetest联通LAX
-172.66.144.244#wetest电信FRA
-172.67.239.222#wetest电信AMS
-104.20.35.139#wetest电信FRA
-162.159.138.65#wetest电信FRA
-104.21.85.205#wetest电信AMS
 错误：从API获取的数据不是一个有效的数组。错误：从API获取的数据不是一个有效的数组。
