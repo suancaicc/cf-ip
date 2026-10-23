@@ -13,8 +13,8 @@
 172.64.151.131#wetest电信SIN
 162.159.237.1#wetest电信SJC
 104.18.42.170#wetest电信SIN
-172.67.69.13#移动Default
 198.41.208.103#移动Default
+172.67.69.13#移动Default
 172.67.156.6#移动Default
 172.67.166.5#移动Default
 198.41.209.34#移动Default
